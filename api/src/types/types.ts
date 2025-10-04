@@ -1,0 +1,6 @@
+export const CREATE_ORDER = "CREATE_ORDER";
+export const DELETE_ORDER = "DELETE_ORDER";
+export const GET_OPEN_ORDERS = "GET_OPEN_ORDERS";
+export const GET_DEPTH = "GET_DEPTH";
+export const GET_TRADES = "GET_TRADES";
+export const GET_AVAILABLE_TICKERS = "GET_AVAILABLE_TICKERS"
