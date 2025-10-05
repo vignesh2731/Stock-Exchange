@@ -58,7 +58,6 @@ export function Chart({ market }: { market: string }) {
                     };
                 })
                 .sort((a, b) => a.time - b.time);
-                // console.log(finalData);
             candlestickSeries.setData(finalData);
             chart.timeScale().fitContent();
         });

@@ -4,7 +4,6 @@ import { getTickers } from "@/app/utils/httpClient";
 
 export default async function Home() {
   const markets= await getTickers();
-  console.log("GOOOAT")
   const list1 = markets.slice(0,5);
   const list2 = markets.slice(5,10);
   const list3 = markets.slice(15,20);

@@ -9,7 +9,6 @@ async function main(){
         const response = await redisClient.brPop('messages',1);
         if(!response)continue;
         const data = JSON.parse(response?.element!);
-        console.log(data);
         engine.handleMessage(data.id,data.message); 
     }
 }

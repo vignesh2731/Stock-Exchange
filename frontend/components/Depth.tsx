@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
-import { Button } from "./Button";
-import { getDepth, getTrades } from "@/app/utils/httpClient";
+import { getDepth } from "@/app/utils/httpClient";
 import { SignallingManager } from "@/app/utils/SignallingManager";
 
 export function Depth({market}:{market:string}){

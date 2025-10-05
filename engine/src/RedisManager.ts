@@ -26,8 +26,6 @@ export class RedisManager{
     }
 
     async publishToDBProcessor(message:string){
-        console.log("sent message to db processor");
-        console.log(message);
         await this.publisher.lPush('dbProcessor',message);
     }
 }

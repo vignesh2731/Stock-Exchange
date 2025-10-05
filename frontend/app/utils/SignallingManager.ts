@@ -31,12 +31,8 @@ export class SignallingManager{
             this.bufferedMessages = []
         }
         this.ws.onmessage = (event)=>{
-
             const message = JSON.parse(event.data);
-
             const type = message.type;
-
-            
             if(this.callbacks[type]){
                 this.callbacks[type].forEach(({callback})=>{
                     if(type==="ticker"){

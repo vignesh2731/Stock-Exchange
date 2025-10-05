@@ -17,7 +17,6 @@ orderRouter.post("/",async(req,res)=>{
             userId
         }
     })
-    console.log(response);
     res.json(response);
 })
 
@@ -31,7 +30,7 @@ orderRouter.delete("/",async(req,res)=>{
         }
     })
 
-    res.json(response.payload);
+    res.json(response);
 })
 
 orderRouter.get("/open",async(req,res)=>{
@@ -42,5 +41,5 @@ orderRouter.get("/open",async(req,res)=>{
             market: req.query.market as string
         }
     })
-    return res.json(response.payload);
+    return res.json(response);
 })

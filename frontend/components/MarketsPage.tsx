@@ -34,7 +34,7 @@ export function MarketsPage({markets}:{markets:TickerType[]}){
                                 {Number(market.volume).toFixed(2)}
                             </div>
                             <div className="w-24 text-left">
-                                {Number(market.volume*market.lastPrice).toFixed(2)}
+                                {Number(market.volume)*Number(market.lastPrice)}
                             </div>
                         </div>      
                     </Link>

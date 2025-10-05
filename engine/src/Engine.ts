@@ -44,7 +44,6 @@ export class Engine{
     handleMessage(id:string,message:any){
         const market = message.data?.market || "";
         const clientId = id;
-        console.log(message.type);
         if(message.type==="GET_AVAILABLE_TICKERS"){
             const response = this.orderBook.map(od=>{
                 const tickerData = od.getTicker();
@@ -56,7 +55,6 @@ export class Engine{
                     volume: tickerData.v
                 }
             });
-            console.log(response);
             RedisManager.getInstance().publishMessageToSubscribe(clientId,response);
             return;
         }
@@ -68,15 +66,11 @@ export class Engine{
         if(message.type==="CREATE_ORDER"){
             const orderId = String(Math.random()*10000)
             const {price,quantity,side,userId} = message.data;
-            console.log(price,quantity,side,userId);
             if(side==='buy'){
                 const response = requiredMarket?.matchBid(Number(price),Number(quantity),String(orderId),String(userId));
-                console.log(response);
-                console.log(typeof response);
                 RedisManager.getInstance().publishMessageToSubscribe(clientId,response);
             }
             if(side==='sell'){
-                console.log("In sell");
                 const response = requiredMarket?.matchAsk(price,quantity,orderId,userId);
                 RedisManager.getInstance().publishMessageToSubscribe(clientId,response);
             }
@@ -100,14 +94,10 @@ export class Engine{
                 throw new Error('Market doesnt exists');
             }
             const response = requiredOrderBook.getTrades();
-            console.log(response);
             RedisManager.getInstance().publishMessageToSubscribe(clientId,response);
         }
 
         else if(message.type==="GET_DEPTH"){
-            this.orderBook.forEach(o=>{
-                console.log(o.baseAsset+o.quoteAsset);
-            })
             const requiredOrderBook = this.orderBook.find((o)=>(`${o.baseAsset}${o.quoteAsset}`)===market);
             try{
                  if(!requiredOrderBook){

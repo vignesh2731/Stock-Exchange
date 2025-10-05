@@ -35,12 +35,8 @@ export class OrderBook{
         this.asks.sort((a,b)=>{
             return a.price-b.price;
         });
-        console.log("In match bid");
         for(let i = 0; i<this.asks.length; i++){
-            console.log("Checking condition");
-            console.log(price,this.asks[i].price);
             if(price>=this.asks[i].price){
-                console.log("In if");
                 this.currentPrice = this.asks[i].price;
                 let broughtQty = Math.min(quantity,this.asks[i].quantity);
                 this.asks[i].quantity-=broughtQty;
@@ -70,18 +66,14 @@ export class OrderBook{
     }
 
     matchAsk(price:number,quantity:number,orderId:string,userId:string){
-        console.log("In match ask");    
         let executedQty = 0;
         let fills:Fills[] = [];
         this.bids.sort((a,b)=>{
             return a.price-b.price;
         });
-        console.log("after sorting")
         for(let i = 0; i<this.bids.length; i++){
-            console.log("Checking condition");
             console.log(price,this.bids[i].price);
             if(price<=this.bids[i].price){
-                console.log("Inside condition");
                 this.currentPrice = this.bids[i].price;
                 let broughtQty = Math.min(quantity,this.bids[i].quantity);
                 this.bids[i].quantity-=broughtQty;
