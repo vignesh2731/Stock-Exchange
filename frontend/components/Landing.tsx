@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import { Button } from "./Button";
 
@@ -13,7 +14,7 @@ export function LandingImage(){
                     <div>
                         Lend SOL to earn staking yield + lending yield, and use as collateral.
                     </div>
-                    <Link href={"/trade/SOL_USDC"}>
+                    <Link href={"/trade/ITC_INR"}>
                         <Button label="Trade Now" className="bg-white flex flex-col justify-center items-center text-black hover:bg-slate-500" onClickAction={()=>{}}/>
                     </Link>
                 </div>
